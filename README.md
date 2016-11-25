@@ -11,7 +11,7 @@ npm install comparaonline/validators
 
 #### Use
 ```js
-const Validators = require('validators');
+var Validators = require('validators');
 console.log(Validators.string.fullName('Foo Bar')); // will log true
 ```
 
