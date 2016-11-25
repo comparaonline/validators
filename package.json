@@ -1,14 +1,16 @@
 {
-  "name": "@comparaonline/validators",
-  "version": "1.0.0",
+  "name": "validators",
+  "version": "1.1.0",
   "description": "Collection of common validations",
-  "main": "index.js",
+  "main": "src/validators.js",
   "scripts": {
-    "test": "mocha --recursive --require test/helper test"
+    "test": "mocha --recursive --require test/helper test",
+    "build": "browserify src/validators.js --standalone Validators -o dist/validators.js"
   },
   "author": "www.comparaonline.cl",
   "license": "UNLICENSED",
   "devDependencies": {
+    "browserify": "^13.1.1",
     "chai": "^3.5.0",
     "mocha": "^3.1.2"
   },
