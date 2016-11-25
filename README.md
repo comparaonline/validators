@@ -5,7 +5,7 @@ A collection of general purpose validations. Currently it only holds **javascrip
 
 ### Node
 #### Install
-```js
+```
 npm install comparaonline/validators
 ```
 
@@ -16,20 +16,19 @@ console.log(Validators.string.fullName('Foo Bar')); // will log true
 ```
 
 ### Browser
-1. Download `dist/validators.js`
+1. Download either `dist/validators.js` or `dist/validators.min.js`
 2. Include it in your page:
 
    ```html
    <script type="text/javascript" src="validators.js"></script>
    ```
-   
+
 3. Use it under the global name `Validators`:
 
    ```js
    alert(Validators.string.fullName('Foo Bar')); // will alert true
-
    ```
-   
+
 ## Validations
 ### String
 - fullName

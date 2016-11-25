@@ -4,7 +4,7 @@ module.exports = {
 
     const reversedStringArray = Array.from(number.toString()).reverse();
     const sum = reversedStringArray.reduce((memo, digit, index) => {
-      factor = index % 6 + 2;
+      const factor = index % 6 + 2;
       return memo + parseInt(digit) * factor;
     }, 0);
 
