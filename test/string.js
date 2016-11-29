@@ -12,7 +12,7 @@ describe('Validating strings with', () => {
     it('returns false on a one-word string', () => {
       expect(Validators.fullName('OneWord')).to.be.false;
     });
-    it('returns false on an undefined or null string', () => {
+    it('returns false on an invalid string variable type', () => {
       expect(Validators.fullName(undefined)).to.be.false;
       expect(Validators.fullName(null)).to.be.false;
     });

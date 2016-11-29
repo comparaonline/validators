@@ -1,6 +1,6 @@
 module.exports = {
   fullName: (name) => {
-    if (name == null) return false;
+    if (typeof name !== 'string') return false;
     return name.split(/\s+/).length > 1;
   },
   email: (address) => {
