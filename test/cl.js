@@ -30,5 +30,9 @@ describe('Validating cl related with', () => {
       expect(Validators.nationalId('17.552.942-')).to.be.false;
       expect(Validators.nationalId('17.552.942')).to.be.false;
     });
+    it('returns false on an undefined or null id', () => {
+      expect(Validators.nationalId(undefined)).to.be.false;
+      expect(Validators.nationalId(null)).to.be.false;
+    });
   });
 });

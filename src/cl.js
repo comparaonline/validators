@@ -2,6 +2,8 @@ const Utils = require('./utils');
 
 module.exports = {
   nationalId: (id) => {
+    if (id == null) return false;
+
     const [number, verifier] = id.split(/\s*-\s*/);
     return verifier == Utils.mod11Verifier(number);
   },
