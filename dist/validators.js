@@ -7,6 +7,8 @@ var Utils = require('./utils');
 
 module.exports = {
   nationalId: function nationalId(id) {
+    if (typeof id !== 'string') return false;
+
     var _id$split = id.split(/\s*-\s*/),
         _id$split2 = _slicedToArray(_id$split, 2),
         number = _id$split2[0],
@@ -15,17 +17,19 @@ module.exports = {
     return verifier == Utils.mod11Verifier(number);
   },
   phone: function phone(number) {
-    var oldFormat = /\d{1,2}-?\d{7}/;
-    var newFormat = /\d{9}/;
-    return oldFormat.test(number) || newFormat.test(number);
+    var oldFormatRegions = /^\d{2}-?\d{7}$/;
+    var oldFormatMetropolitan = /^\d-?\d{8}$/;
+    var newFormat = /^\d{9}$/;
+    return oldFormatRegions.test(number) || oldFormatMetropolitan.test(number) || newFormat.test(number);
   }
 };
 
 },{"./utils":3}],2:[function(require,module,exports){
-"use strict";
+'use strict';
 
 module.exports = {
   fullName: function fullName(name) {
+    if (typeof name !== 'string') return false;
     return name.split(/\s+/).length > 1;
   },
   email: function email(address) {
