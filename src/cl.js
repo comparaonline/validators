@@ -14,5 +14,12 @@ module.exports = {
     return oldFormatRegions.test(number)
       || oldFormatMetropolitan.test(number)
       || newFormat.test(number);
+  },
+  plate: (plate) => {
+    const cleanedPlate = Utils.cleanString(plate);
+    if(cleanedPlate.length != 6) return false;
+    const oldFormat = /[a-zA-Z]{2}-?\d{4}/;
+    const currentFormat = /[BCDFGHJKLPRSTVWXYZ]{4}-?\d{2}$/;
+    return oldFormat.test(plate) || currentFormat.test(plate);
   }
-}
+};

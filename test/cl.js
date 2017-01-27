@@ -77,4 +77,39 @@ describe('Validating cl related with', () => {
       });
     });
   });
+
+  describe('#plate', () => {
+    it('returns true on a plate with proper length', () => {
+        expect(Validators.plate('AA1111')).to.be.true;
+        expect(Validators.plate('AA-1111')).to.be.true;
+      });
+    it('returns false on a plate with wrong length', () => {
+      expect(Validators.plate('A111')).to.be.false;
+      expect(Validators.plate('AAA11111')).to.be.false;
+      expect(Validators.plate('AAA1-1111')).to.be.false;
+    });
+
+    context('with old format', () => {
+      it('returns true on a plate with proper format', () => {
+        expect(Validators.plate('AB7089')).to.be.true
+        expect(Validators.plate('AB-7089')).to.be.true
+      });
+      it('returns false on a plate with wrong format', () => {
+        expect(Validators.plate('A11B22')).to.be.false;
+        expect(Validators.plate('AV-1B22')).to.be.false;
+      });
+    });
+
+    context('with current format', () => {
+      it('returns true on a plate with proper format', () => {
+        expect(Validators.plate('GGZP89')).to.be.true
+        expect(Validators.plate('GGZP-89')).to.be.true
+      });
+      it('returns false on a plate with wrong format', () => {
+        expect(Validators.plate('A11B22')).to.be.false;
+        expect(Validators.plate('AABB12')).to.be.false;
+        expect(Validators.plate('AZPA-12')).to.be.false;
+      });
+    });
+  });
 });
