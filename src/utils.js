@@ -13,5 +13,8 @@ module.exports = {
     if (mod11 == 11) verifier = 0;
     if (mod11 == 10) verifier = 'k';
     return verifier;
+  },
+  cleanString: (string) => {
+    return string.replace(/\W/g, '');
   }
-}
+};

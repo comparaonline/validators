@@ -21,6 +21,13 @@ module.exports = {
     var oldFormatMetropolitan = /^\d-?\d{8}$/;
     var newFormat = /^\d{9}$/;
     return oldFormatRegions.test(number) || oldFormatMetropolitan.test(number) || newFormat.test(number);
+  },
+  plate: function plate(_plate) {
+    var cleanedPlate = Utils.cleanString(_plate);
+    if (cleanedPlate.length != 6) return false;
+    var oldFormat = /[a-zA-Z]{2}-?\d{4}/;
+    var currentFormat = /[BCDFGHJKLPRSTVWXYZ]{4}-?\d{2}$/;
+    return oldFormat.test(_plate) || currentFormat.test(_plate);
   }
 };
 
@@ -56,6 +63,9 @@ module.exports = {
     if (mod11 == 11) verifier = 0;
     if (mod11 == 10) verifier = 'k';
     return verifier;
+  },
+  cleanString: function cleanString(string) {
+    return string.replace(/\W/g, '');
   }
 };
 
