@@ -14,7 +14,7 @@ module.exports = {
         number = _id$split2[0],
         verifier = _id$split2[1];
 
-    return verifier == Utils.mod11Verifier(number);
+    return verifier === Utils.mod11Verifier(number);
   },
   phone: function phone(number) {
     var oldFormatRegions = /^\d{2}-?\d{7}$/;
@@ -24,7 +24,7 @@ module.exports = {
   },
   plate: function plate(_plate) {
     var cleanedPlate = Utils.cleanString(_plate);
-    if (cleanedPlate.length != 6) return false;
+    if (cleanedPlate.length !== 6) return false;
     var oldFormat = /[a-zA-Z]{2}-?\d{4}/;
     var currentFormat = /[BCDFGHJKLPRSTVWXYZ]{4}-?\d{2}$/;
     return oldFormat.test(_plate) || currentFormat.test(_plate);
@@ -55,14 +55,14 @@ module.exports = {
     var reversedStringArray = Array.from(number.toString()).reverse();
     var sum = reversedStringArray.reduce(function (memo, digit, index) {
       var factor = index % 6 + 2;
-      return memo + parseInt(digit) * factor;
+      return memo + parseInt(digit, 10) * factor;
     }, 0);
 
     var mod11 = 11 - sum % 11;
     var verifier = mod11;
-    if (mod11 == 11) verifier = 0;
-    if (mod11 == 10) verifier = 'k';
-    return verifier;
+    if (mod11 === 11) verifier = 0;
+    if (mod11 === 10) verifier = 'k';
+    return verifier.toString();
   },
   cleanString: function cleanString(string) {
     return string.replace(/\W/g, '');
@@ -71,6 +71,8 @@ module.exports = {
 
 },{}],4:[function(require,module,exports){
 'use strict';
+
+/* eslint-disable global-require*/
 
 module.exports = {
   cl: require('./cl'),
