@@ -5,8 +5,10 @@
   "main": "src/validators.js",
   "scripts": {
     "precommit": "npm run build && git add dist",
+    "pretest": "npm run validate",
     "test": "mocha --recursive --require test/helper test",
-    "build": "gulp"
+    "build": "gulp",
+    "validate": "eslint './!(node_modules|coverage|dist)/**/*.js'"
   },
   "author": "www.comparaonline.cl",
   "license": "UNLICENSED",
@@ -19,6 +21,9 @@
     "babelify": "^7.3.0",
     "browserify": "^13.1.1",
     "chai": "^3.5.0",
+    "eslint": "^3.15.0",
+    "eslint-config-airbnb": "^14.1.0",
+    "eslint-plugin-import": "^2.2.0",
     "gulp": "^3.9.1",
     "gulp-rename": "^1.2.2",
     "gulp-streamify": "^1.0.2",
@@ -26,5 +31,9 @@
     "husky": "^0.11.9",
     "mocha": "^3.1.2",
     "vinyl-source-stream": "^1.1.0"
+  },
+  "dependencies": {
+    "eslint-plugin-jsx-a11y": "^4.0.0",
+    "eslint-plugin-react": "^6.9.0"
   }
 }

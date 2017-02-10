@@ -1,4 +1,7 @@
+/* eslint-disable no-unused-expressions */
+
 const expect = require('chai').expect;
+// eslint-disable-next-line
 const Validators = require('src/string');
 
 describe('Validating strings with', () => {
