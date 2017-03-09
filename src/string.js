@@ -4,7 +4,11 @@ module.exports = {
     return name.split(/\s+/).length > 1;
   },
   email: (address) => {
-    const emailRegexp = /^(\w+|.|\+)+@(\w+\.)+\w+$/i;
+    const emailRegexp = /^.+@.+\..+$/i;
     return emailRegexp.test(address);
+  },
+  password: (password) => {
+    const passwordRegexp = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/i;
+    return passwordRegexp.test(password);
   }
 };

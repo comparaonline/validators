@@ -40,8 +40,12 @@ module.exports = {
     return name.split(/\s+/).length > 1;
   },
   email: function email(address) {
-    var emailRegexp = /^(\w+|.|\+)+@(\w+\.)+\w+$/i;
+    var emailRegexp = /^.+@.+\..+$/i;
     return emailRegexp.test(address);
+  },
+  password: function password(_password) {
+    var passwordRegexp = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/i;
+    return passwordRegexp.test(_password);
   }
 };
 

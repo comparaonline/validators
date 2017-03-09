@@ -50,4 +50,27 @@ describe('Validating strings with', () => {
       expect(Validators.email('foobar@foo.')).to.be.false;
     });
   });
+
+  describe('#password', () => {
+    context('without numbers', () => {
+      it('returns false', () => {
+        expect(Validators.password('dasjdsij')).to.be.false;
+      });
+    });
+    context('without letters', () => {
+      it('returns false', () => {
+        expect(Validators.password('12343234')).to.be.false;
+      });
+    });
+    context('with less than 8 chars', () => {
+      it('returns false', () => {
+        expect(Validators.password('abc123')).to.be.false;
+      });
+    });
+    context('with letters, numbers and longer than 8 chars', () => {
+      it('returns true', () => {
+        expect(Validators.password('1p2a3s4s')).to.be.true;
+      });
+    });
+  });
 });
