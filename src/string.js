@@ -6,5 +6,9 @@ module.exports = {
   email: (address) => {
     const emailRegexp = /^.+@.+\..+$/i;
     return emailRegexp.test(address);
+  },
+  password: (password) => {
+    const passwordRegexp = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/i;
+    return passwordRegexp.test(password);
   }
 };
