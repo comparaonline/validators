@@ -8,7 +8,7 @@ module.exports = {
     return emailRegexp.test(address);
   },
   password: (password) => {
-    const passwordRegexp = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/i;
+    const passwordRegexp = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d.]{8,}$/i;
     return passwordRegexp.test(password);
   }
 };
