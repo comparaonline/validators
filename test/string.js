@@ -72,5 +72,10 @@ describe('Validating strings with', () => {
         expect(Validators.password('1p2a3s4s')).to.be.true;
       });
     });
+    context('with letters, numbers, dots and longer than 8 chars', () => {
+      it('returns true', () => {
+        expect(Validators.password('1p.a.s.s')).to.be.true;
+      });
+    });
   });
 });

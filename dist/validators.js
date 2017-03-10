@@ -44,7 +44,7 @@ module.exports = {
     return emailRegexp.test(address);
   },
   password: function password(_password) {
-    var passwordRegexp = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/i;
+    var passwordRegexp = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d.]{8,}$/i;
     return passwordRegexp.test(_password);
   }
 };
