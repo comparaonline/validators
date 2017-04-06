@@ -1,8 +1,10 @@
 /* eslint-disable no-unused-expressions */
 
 const expect = require('chai').expect;
-// eslint-disable-next-line
-const Validators = require('src/string');
+const Chance = require('chance');
+
+const Validators = require('src/string');// eslint-disable-line
+const chance = new Chance('comparaonline');
 
 describe('Validating strings with', () => {
   describe('#fullName', () => {
@@ -77,5 +79,47 @@ describe('Validating strings with', () => {
         expect(Validators.password('1p.a.s.s')).to.be.true;
       });
     });
+  });
+
+  describe('#creditCard', () => {
+    const creditCard = Validators.creditCard;
+
+    context('Mastercard', () =>
+      it('returns true', () =>
+        expect(creditCard(chance.cc({ type: 'Mastercard' }))).to.be.true
+      )
+    );
+
+    context('Visa', () =>
+      it('returns true', () =>
+        expect(creditCard(chance.cc({ type: 'Visa' }))).to.be.true
+      )
+    );
+
+    context('American Express ', () =>
+      it('returns true', () =>
+        expect(creditCard(chance.cc({ type: 'American Express' }))).to.be.true
+      )
+    );
+
+    context('Mod10 with length equal to 12', () =>
+      it('returns true', () => expect(creditCard('100500101017')).to.be.true)
+    );
+
+    context('Mod11 (RUT)', () =>
+      it('returns false', () => expect(creditCard('75769172')).to.be.false)
+    );
+
+    context('Mod10 with length equal to 11', () =>
+      it('returns false', () => expect(creditCard('10050010106')).to.be.false)
+    );
+
+    context('Mod10 with length equal to 20', () =>
+      it('returns false', () => expect(creditCard('11122233445566779018')).to.be.false)
+    );
+
+    context('with letters', () =>
+      it('returns false', () => expect(creditCard('creditcardnumber')).to.be.false)
+    );
   });
 });

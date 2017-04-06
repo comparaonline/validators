@@ -33,6 +33,7 @@ console.log(Validators.string.fullName('Foo Bar')); // will log true
 ### String
 - fullName
 - email
+- creditCard
 
 ### CL
 - nationalId
