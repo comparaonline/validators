@@ -1,4 +1,4 @@
-const luhn = require('fast-luhn');
+import luhn from 'fast-luhn';
 
 const emailRegexp = /^.+@.+\..+$/i;
 const passwordRegexp = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d.]{8,}$/i;
