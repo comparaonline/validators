@@ -1,4 +1,4 @@
-import { mod11Verifier, cleanString } from './Utils';
+import { mod11Verifier, cleanString } from './utils';
 
 export const nationalId = id => {
   if (typeof id !== 'string') return false;
