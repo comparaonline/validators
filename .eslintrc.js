@@ -16,7 +16,6 @@ module.exports = {
     'no-underscore-dangle': 0,
     'no-param-reassign': 0,
     'import/no-extraneous-dependencies': 0,
-    'import/no-extraneous-dependencies': ['error', {'devDependencies': true, 'optionalDependencies': false, 'peerDependencies': false}],
-    'new-cap': [2, {'capIsNewExceptions': ['Map', 'Set', 'List']}],
+    'import/no-extraneous-dependencies': ['error', {'devDependencies': true, 'optionalDependencies': false, 'peerDependencies': false}]
   }
 }

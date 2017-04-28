@@ -1,6 +1,7 @@
-/* eslint-disable global-require*/
+import * as cl from './cl';
+import * as string from './string';
 
-module.exports = {
-  cl: require('./cl'),
-  string: require('./string')
+export {
+  cl,
+  string
 };
