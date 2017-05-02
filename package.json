@@ -1,8 +1,8 @@
 {
   "name": "validators",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "description": "Collection of common validations",
-  "main": "dist/validators.js",
+  "main": "dist/validators.min.js",
   "scripts": {
     "precommit": "npm run build && git add dist",
     "pretest": "npm run validate",
