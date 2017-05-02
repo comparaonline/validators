@@ -1,7 +1,7 @@
 import * as cl from './cl';
 import * as string from './string';
 
-export {
+export default {
   cl,
   string
 };

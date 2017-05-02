@@ -1,6 +1,6 @@
 {
   "name": "validators",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "description": "Collection of common validations",
   "main": "dist/validators.min.js",
   "scripts": {
