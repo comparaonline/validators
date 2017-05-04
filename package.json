@@ -6,7 +6,7 @@
   "scripts": {
     "precommit": "npm run build && git add dist",
     "pretest": "npm run validate",
-    "test": "NODE_ENV=test mocha --compilers js:babel-core/register --recursive test",
+    "test": "NODE_ENV=test istanbul cover _mocha test/*.js -- --compilers js:babel-core/register",
     "build": "rollup -c",
     "validate": "eslint './!(node_modules|coverage|dist)/**/*.js'"
   },
@@ -30,6 +30,7 @@
     "eslint-plugin-jsx-a11y": "^4.0.0",
     "eslint-plugin-react": "^6.9.0",
     "husky": "^0.13.3",
+    "istanbul": "^1.1.0-alpha.1",
     "mocha": "^3.1.2",
     "rollup": "^0.41.6",
     "rollup-plugin-babel": "^2.7.1",
