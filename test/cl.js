@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-expressions */
 import { expect } from 'chai';
-import { nationalId, phone, plate } from '../src/cl';
+import { nationalId, nationalIdLength, phone, plate } from '../src/cl';
 
 
 describe('Validating cl related with', () => {
@@ -36,6 +36,49 @@ describe('Validating cl related with', () => {
       expect(nationalId(undefined)).to.be.false;
       expect(nationalId(null)).to.be.false;
       expect(nationalId(23730200)).to.be.false;
+    });
+    context('when it has too short length', () => {
+      expect(nationalId('1-9')).to.be.false;
+      expect(nationalId('12-4')).to.be.false;
+      expect(nationalId('123-6')).to.be.false;
+      expect(nationalId('1234-3')).to.be.false;
+      expect(nationalId('12345-5')).to.be.false;
+      expect(nationalId('123456-0')).to.be.false;
+      expect(nationalId('123.456-0')).to.be.false;
+    });
+
+    context('when it has too long length', () => {
+      expect(nationalId('123456789-2')).to.be.false;
+      expect(nationalId('123.456.789-2')).to.be.false;
+    });
+
+    context('when it has a valid value hidden in a string', () => {
+      expect(nationalId('1E6s3t5e8b0an35ma-7')).to.be.true;
+    });
+  });
+
+  describe('#nationalIdLength', () => {
+    context('when it has a length less than 7', () => {
+      it('returns false', () => expect(nationalIdLength('1')).to.be.false);
+      it('returns false', () => expect(nationalIdLength('12')).to.be.false);
+      it('returns false', () => expect(nationalIdLength('123')).to.be.false);
+      it('returns false', () => expect(nationalIdLength('1234')).to.be.false);
+      it('returns false', () => expect(nationalIdLength('12345')).to.be.false);
+      it('returns false', () => expect(nationalIdLength('123456')).to.be.false);
+    });
+
+    context('when it has a length equal to 7', () =>
+      it('returns true', () => expect(nationalIdLength('1913834')).to.be.true)
+    );
+
+    context('when it has a length equal to 8', () =>
+      it('returns true', () => expect(nationalIdLength('12345678')).to.be.true)
+    );
+
+    context('when it has a length greater than 9', () => {
+      it('returns false', () => expect(nationalIdLength('123456789')).to.be.false);
+      it('returns false', () => expect(nationalIdLength('1234567891')).to.be.false);
+      it('returns false', () => expect(nationalIdLength('12345678910')).to.be.false);
     });
   });
 
