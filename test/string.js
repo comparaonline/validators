@@ -1,7 +1,6 @@
 /* eslint-disable no-unused-expressions */
 import { expect } from 'chai';
-import { Chance } from 'chance';
-import { fullName, email, password, creditCard } from '../src/string';
+import { fullName, email, password } from '../src/string';
 
 describe('Validating strings with', () => {
   describe('#fullName', () => {
@@ -76,47 +75,5 @@ describe('Validating strings with', () => {
         expect(password('1p.a.s.s')).to.be.true;
       });
     });
-  });
-
-  describe('#creditCard', () => {
-    const chance = new Chance();
-
-    context('Mastercard', () =>
-      it('returns true', () =>
-        expect(creditCard(chance.cc({ type: 'Mastercard' }))).to.be.true
-      )
-    );
-
-    context('Visa', () =>
-      it('returns true', () =>
-        expect(creditCard(chance.cc({ type: 'Visa' }))).to.be.true
-      )
-    );
-
-    context('American Express ', () =>
-      it('returns true', () =>
-        expect(creditCard(chance.cc({ type: 'American Express' }))).to.be.true
-      )
-    );
-
-    context('Mod10 with length equal to 12', () =>
-      it('returns true', () => expect(creditCard('100500101017')).to.be.true)
-    );
-
-    context('Mod11 (RUT)', () =>
-      it('returns false', () => expect(creditCard('75769172')).to.be.false)
-    );
-
-    context('Mod10 with length equal to 11', () =>
-      it('returns false', () => expect(creditCard('10050010106')).to.be.false)
-    );
-
-    context('Mod10 with length equal to 20', () =>
-      it('returns false', () => expect(creditCard('11122233445566779018')).to.be.false)
-    );
-
-    context('with letters', () =>
-      it('returns false', () => expect(creditCard('creditcardnumber')).to.be.false)
-    );
   });
 });
