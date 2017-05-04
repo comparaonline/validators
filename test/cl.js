@@ -59,26 +59,26 @@ describe('Validating cl related with', () => {
 
   describe('#nationalIdLength', () => {
     context('when it has a length less than 7', () => {
-      it('returns false', () => expect(nationalIdLength('1')).to.be.false);
-      it('returns false', () => expect(nationalIdLength('12')).to.be.false);
-      it('returns false', () => expect(nationalIdLength('123')).to.be.false);
-      it('returns false', () => expect(nationalIdLength('1234')).to.be.false);
-      it('returns false', () => expect(nationalIdLength('12345')).to.be.false);
-      it('returns false', () => expect(nationalIdLength('123456')).to.be.false);
+      it('returns false on length equal to 1', () => expect(nationalIdLength('1')).to.be.false);
+      it('returns false on length equal to 2', () => expect(nationalIdLength('12')).to.be.false);
+      it('returns false on length equal to 3', () => expect(nationalIdLength('123')).to.be.false);
+      it('returns false on length equal to 4', () => expect(nationalIdLength('1234')).to.be.false);
+      it('returns false on length equal to 5', () => expect(nationalIdLength('12345')).to.be.false);
+      it('returns false on length equal to 6', () => expect(nationalIdLength('123456')).to.be.false);
     });
 
     context('when it has a length equal to 7', () =>
-      it('returns true', () => expect(nationalIdLength('1913834')).to.be.true)
+      it('returns true on length equal to 7', () => expect(nationalIdLength('1913834')).to.be.true)
     );
 
     context('when it has a length equal to 8', () =>
-      it('returns true', () => expect(nationalIdLength('12345678')).to.be.true)
+      it('returns true on length equal to 8', () => expect(nationalIdLength('12345678')).to.be.true)
     );
 
     context('when it has a length greater than 9', () => {
-      it('returns false', () => expect(nationalIdLength('123456789')).to.be.false);
-      it('returns false', () => expect(nationalIdLength('1234567891')).to.be.false);
-      it('returns false', () => expect(nationalIdLength('12345678910')).to.be.false);
+      it('returns false on length equal to 9', () => expect(nationalIdLength('123456789')).to.be.false);
+      it('returns false on length equal to 10', () => expect(nationalIdLength('1234567891')).to.be.false);
+      it('returns false on length equal to 11', () => expect(nationalIdLength('12345678910')).to.be.false);
     });
   });
 
