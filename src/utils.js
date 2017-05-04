@@ -15,3 +15,5 @@ export const mod11Verifier = value => {
 };
 
 export const cleanString = string => string.replace(/\W/g, '');
+
+export const between = (x, min, max) => x >= min && x <= max;
