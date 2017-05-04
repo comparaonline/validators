@@ -40,14 +40,22 @@ console.log(Validators.string.fullName('Foo Bar')); // will log true
 
 ## Validations
 ### String
-- fullName
 - email
-- creditCard
+- fullName
+- password
 
 ### CL
 - nationalId
+- nationalIdLength
 - phone
+- plate
 
+### CreditCard
+- creditCard
+- isAmericanExpress
+- isDinersClub
+- isMastercard
+- isVisa
 
 ## Development
 ### Run tests
