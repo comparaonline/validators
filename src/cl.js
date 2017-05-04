@@ -1,10 +1,17 @@
-import { mod11Verifier, cleanString } from './utils';
+import { mod11Verifier, cleanString, between } from './utils';
+
+const NATIONAL_ID_MIN_LENGTH = 7;
+const NATIONAL_ID_MAX_LENGTH = 8;
+
+export const nationalIdLength = id => (
+  between(id.replace(/\D/g, '').length, NATIONAL_ID_MIN_LENGTH, NATIONAL_ID_MAX_LENGTH)
+);
 
 export const nationalId = id => {
   if (typeof id !== 'string') return false;
 
   const [number, verifier] = id.split(/\s*-\s*/);
-  return verifier === mod11Verifier(number);
+  return (nationalIdLength(number)) && verifier === mod11Verifier(number);
 };
 
 export const phone = number => {
