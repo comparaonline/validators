@@ -1,4 +1,4 @@
-const emailRegexp = /^.+@.+\..+$/i;
+const emailRegexp = /^\S+@\S+\.\S+$/i;
 const passwordRegexp = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d.]{8,}$/i;
 
 export const fullName = name => {
