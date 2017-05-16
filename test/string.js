@@ -48,8 +48,8 @@ describe('Validating strings with', () => {
       expect(email('foobar@foo.')).to.be.false;
     });
     it('returns false when email contain spaces', () => {
-      expect(email('foo bar@foo')).to.be.false;
-      expect(email('foobar@fo   o.')).to.be.false;
+      expect(email('foo bar@foo.com')).to.be.false;
+      expect(email('foobar@fo   o.cl')).to.be.false;
     });
   });
 
