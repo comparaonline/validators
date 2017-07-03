@@ -50,6 +50,9 @@ console.log(Validators.string.fullName('Foo Bar')); // will log true
 - phone
 - plate
 
+### BR
+- cpf
+
 ### CreditCard
 - creditCard
 - isAmericanExpress
