@@ -70,10 +70,6 @@ const generateEloCard = () => {
     validade: '02/12/2018',
     seguranca: '574'
   }, {
-    vcc: '4514165947540227',
-    validade: '02/11/2017',
-    seguranca: '867'
-  }, {
     vcc: '6363681668285310',
     validade: '02/09/2018',
     seguranca: '738'
