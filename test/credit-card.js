@@ -6,8 +6,12 @@ import {
   isAmericanExpress,
   isDinersClub,
   isMastercard,
-  isVisa
+  isVisa,
+  isHipercard,
+  isElo
 } from '../src/credit-card';
+
+import g from '../src/helpers/customCardGenerator';
 
 const chance = new Chance();
 
@@ -101,5 +105,45 @@ describe('Credit Card validations', () => {
         expect(isMastercard(chance.cc({ type: 'Mastercard' }))).to.be.true
       )
     );
+  });
+
+  describe('#isHipercard', () => {
+    context('Hipercard', () => {
+      it('returns true', () => {
+        expect(isHipercard(g.generateHipercard().vcc)).to.be.true;
+      });
+    });
+
+    context('Elo', () => {
+      it('returns false', () => {
+        expect(isHipercard(g.generateEloCard().vcc)).to.be.false;
+      });
+    });
+
+    context('Diners Club International', () => {
+      it('returns false', () => {
+        expect(isHipercard(chance.cc({ type: 'Diners Club International' }))).to.be.false;
+      });
+    });
+  });
+
+  describe('#isElo', () => {
+    context('Elo', () => {
+      it('returns true', () => {
+        expect(isElo(g.generateEloCard().vcc)).to.be.true;
+      });
+    });
+
+    context('Elo', () => {
+      it('returns false', () => {
+        expect(isElo(g.generateHipercard().vcc)).to.be.false;
+      });
+    });
+
+    context('Diners Club International', () => {
+      it('returns false', () => {
+        expect(isElo(chance.cc(chance.cc({ type: 'Diners Club International' })))).to.be.false;
+      });
+    });
   });
 });
