@@ -142,7 +142,7 @@ describe('Credit Card validations', () => {
 
     context('Diners Club International', () => {
       it('returns false', () => {
-        expect(isElo(chance.cc(chance.cc({ type: 'Visa' })))).to.be.false;
+        expect(isElo(chance.cc(chance.cc({ type: 'Diners Club International' })))).to.be.false;
       });
     });
   });
