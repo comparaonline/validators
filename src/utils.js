@@ -20,4 +20,4 @@ export const between = (x, min, max) => x >= min && x <= max;
 
 export const repeat = (r, a) => Array(r + 1).join(a);
 
-export const range = r => Array.from({ length: r }, (x, i) => i);
+export const range = r => [...Array(r)].map((x, i) => i);

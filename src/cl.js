@@ -25,7 +25,7 @@ export const nationalId = id => {
 export const isNationalIdInBlacklist = (id, list = [], useDefault = true) => {
   const [number] = id.split(/\s*-\s*/);
   const blacklist = useDefault ? list.concat(NATIONAL_ID_BLACKLIST) : list;
-  return blacklist.includes(number);
+  return blacklist.indexOf(number) !== -1;
 };
 
 export const phone = number => {
