@@ -17,3 +17,7 @@ export const mod11Verifier = value => {
 export const cleanString = string => string.replace(/\W/g, '');
 
 export const between = (x, min, max) => x >= min && x <= max;
+
+export const repeat = (r, a) => Array(r + 1).join(a);
+
+export const range = r => [...Array(r)].map((x, i) => i);
