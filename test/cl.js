@@ -1,6 +1,12 @@
 /* eslint-disable no-unused-expressions */
 import { expect } from 'chai';
-import { nationalId, nationalIdLength, phone, plate } from '../src/cl';
+import {
+  nationalId,
+  nationalIdLength,
+  phone,
+  plate,
+  isNationalIdInBlacklist
+} from '../src/cl';
 
 
 describe('Validating cl related with', () => {
@@ -65,6 +71,34 @@ describe('Validating cl related with', () => {
       it('returns false on length equal to 4', () => expect(nationalIdLength('1234')).to.be.false);
       it('returns false on length equal to 5', () => expect(nationalIdLength('12345')).to.be.false);
       it('returns false on length equal to 6', () => expect(nationalIdLength('123456')).to.be.false);
+    });
+
+    context('when it has a length equal to 7', () =>
+      it('returns true on length equal to 7', () => expect(nationalIdLength('1913834')).to.be.true)
+    );
+
+    context('when it has a length equal to 8', () =>
+      it('returns true on length equal to 8', () => expect(nationalIdLength('12345678')).to.be.true)
+    );
+
+    context('when it has a length greater than 9', () => {
+      it('returns false on length equal to 9', () => expect(nationalIdLength('123456789')).to.be.false);
+      it('returns false on length equal to 10', () => expect(nationalIdLength('1234567891')).to.be.false);
+      it('returns false on length equal to 11', () => expect(nationalIdLength('12345678910')).to.be.false);
+    });
+  });
+
+  describe('#isNationalIdInBlacklist', () => {
+    context('is in blacklist', () => {
+      it('is in blacklist', () => {
+        expect(isNationalIdInBlacklist('0000000-0')).to.be.true;
+        expect(isNationalIdInBlacklist('9999999-9')).to.be.true;
+        expect(isNationalIdInBlacklist('1111111-2')).to.be.true;
+      });
+
+      it('is not in blacklist', () => {
+        expect(isNationalIdInBlacklist('12345678-5')).to.be.false;
+      });
     });
 
     context('when it has a length equal to 7', () =>

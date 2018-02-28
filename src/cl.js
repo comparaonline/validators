@@ -1,7 +1,14 @@
-import { mod11Verifier, cleanString, between } from './utils';
+import { mod11Verifier, cleanString, between, range, repeat } from './utils';
 
 const NATIONAL_ID_MIN_LENGTH = 7;
 const NATIONAL_ID_MAX_LENGTH = 8;
+const NATIONAL_ID_REPEAT_DIGITS = 10;
+const NATIONAL_ID_BLACKLIST = (
+  [NATIONAL_ID_MIN_LENGTH, NATIONAL_ID_MAX_LENGTH].reduce((list, length) =>
+    list.concat(range(NATIONAL_ID_REPEAT_DIGITS).map(n => repeat(length, n))),
+  [])
+);
+
 
 export const nationalIdLength = id => (
   between(id.replace(/\D/g, '').length, NATIONAL_ID_MIN_LENGTH, NATIONAL_ID_MAX_LENGTH)
@@ -12,6 +19,13 @@ export const nationalId = id => {
 
   const [number, verifier] = id.split(/\s*-\s*/);
   return (nationalIdLength(number)) && verifier === mod11Verifier(number);
+};
+
+
+export const isNationalIdInBlacklist = (id, list = [], useDefault = true) => {
+  const [number] = id.split(/\s*-\s*/);
+  const blacklist = useDefault ? list.concat(NATIONAL_ID_BLACKLIST) : list;
+  return blacklist.includes(number);
 };
 
 export const phone = number => {
