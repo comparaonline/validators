@@ -1,12 +1,13 @@
 {
   "name": "validators",
-  "version": "1.6.0",
+  "version": "1.7.0",
   "description": "Collection of common validations",
   "main": "dist/validators.min.js",
   "scripts": {
     "precommit": "npm run build && git add dist",
     "pretest": "npm run validate",
-    "test": "NODE_ENV=test istanbul cover _mocha test/*.js -- --compilers js:babel-core/register",
+    "test":
+      "NODE_ENV=test istanbul cover _mocha test/*.js -- --compilers js:babel-core/register",
     "build": "rollup -c",
     "validate": "eslint './!(node_modules|coverage|dist)/**/*.js'"
   },
