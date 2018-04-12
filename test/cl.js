@@ -5,9 +5,9 @@ import {
   nationalIdLength,
   phone,
   plate,
-  isNationalIdInBlacklist
+  isNationalIdInBlacklist,
+  isCompanyNationalId
 } from '../src/cl';
-
 
 describe('Validating cl related with', () => {
   describe('#nationalId', () => {
@@ -65,26 +65,37 @@ describe('Validating cl related with', () => {
 
   describe('#nationalIdLength', () => {
     context('when it has a length less than 7', () => {
-      it('returns false on length equal to 1', () => expect(nationalIdLength('1')).to.be.false);
-      it('returns false on length equal to 2', () => expect(nationalIdLength('12')).to.be.false);
-      it('returns false on length equal to 3', () => expect(nationalIdLength('123')).to.be.false);
-      it('returns false on length equal to 4', () => expect(nationalIdLength('1234')).to.be.false);
-      it('returns false on length equal to 5', () => expect(nationalIdLength('12345')).to.be.false);
-      it('returns false on length equal to 6', () => expect(nationalIdLength('123456')).to.be.false);
+      it('returns false on length equal to 1', () =>
+        expect(nationalIdLength('1')).to.be.false);
+      it('returns false on length equal to 2', () =>
+        expect(nationalIdLength('12')).to.be.false);
+      it('returns false on length equal to 3', () =>
+        expect(nationalIdLength('123')).to.be.false);
+      it('returns false on length equal to 4', () =>
+        expect(nationalIdLength('1234')).to.be.false);
+      it('returns false on length equal to 5', () =>
+        expect(nationalIdLength('12345')).to.be.false);
+      it('returns false on length equal to 6', () =>
+        expect(nationalIdLength('123456')).to.be.false);
     });
 
     context('when it has a length equal to 7', () =>
-      it('returns true on length equal to 7', () => expect(nationalIdLength('1913834')).to.be.true)
+      it('returns true on length equal to 7', () =>
+        expect(nationalIdLength('1913834')).to.be.true)
     );
 
     context('when it has a length equal to 8', () =>
-      it('returns true on length equal to 8', () => expect(nationalIdLength('12345678')).to.be.true)
+      it('returns true on length equal to 8', () =>
+        expect(nationalIdLength('12345678')).to.be.true)
     );
 
     context('when it has a length greater than 9', () => {
-      it('returns false on length equal to 9', () => expect(nationalIdLength('123456789')).to.be.false);
-      it('returns false on length equal to 10', () => expect(nationalIdLength('1234567891')).to.be.false);
-      it('returns false on length equal to 11', () => expect(nationalIdLength('12345678910')).to.be.false);
+      it('returns false on length equal to 9', () =>
+        expect(nationalIdLength('123456789')).to.be.false);
+      it('returns false on length equal to 10', () =>
+        expect(nationalIdLength('1234567891')).to.be.false);
+      it('returns false on length equal to 11', () =>
+        expect(nationalIdLength('12345678910')).to.be.false);
     });
   });
 
@@ -101,6 +112,18 @@ describe('Validating cl related with', () => {
 
     it('custom blacklist', () => {
       expect(isNationalIdInBlacklist('12345678-5', ['12345678'])).to.be.true;
+    });
+  });
+
+  describe('#isCompanyNationalId', () => {
+    it('is in company national id', () => {
+      expect(isCompanyNationalId('76564190-K')).to.be.true;
+      expect(isCompanyNationalId('78351200-9')).to.be.true;
+      expect(isCompanyNationalId('84023100-3')).to.be.true;
+    });
+
+    it('is not in company national id', () => {
+      expect(isCompanyNationalId('16358035-7')).to.be.false;
     });
   });
 
