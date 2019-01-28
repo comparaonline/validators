@@ -25,5 +25,18 @@ describe('Validating br related with', () => {
     it('validates messed strings', () => {
       expect(cpf('295$379\n955...93')).to.be.true;
     });
+
+    it('validates against blacklisted values', () => {
+      expect(cpf('00000000000')).to.be.false;
+      expect(cpf('11111111111')).to.be.false;
+      expect(cpf('22222222222')).to.be.false;
+      expect(cpf('33333333333')).to.be.false;
+      expect(cpf('44444444444')).to.be.false;
+      expect(cpf('55555555555')).to.be.false;
+      expect(cpf('66666666666')).to.be.false;
+      expect(cpf('77777777777')).to.be.false;
+      expect(cpf('88888888888')).to.be.false;
+      expect(cpf('99999999999')).to.be.false;
+    });
   });
 });
