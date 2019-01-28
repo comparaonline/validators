@@ -1,9 +1,22 @@
 // eslint-disable-next-line import/prefer-default-export
+export const BLACKLIST = [
+  "00000000000",
+  "11111111111",
+  "22222222222",
+  "33333333333",
+  "44444444444",
+  "55555555555",
+  "66666666666",
+  "77777777777",
+  "88888888888",
+  "99999999999"
+];
+
 export const cpf = value => {
-  if (!value) {
+  if (!value || BLACKLIST.indexOf(value) > 0) {
     return false;
   }
-  value = value.replace(/[^\d]+/g, '');
+  value = value.replace(/[^\d]+/g, "");
   function validateDigit(digit) {
     const init = digit - 9;
     let add = 0;
