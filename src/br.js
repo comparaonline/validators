@@ -13,7 +13,7 @@ export const BLACKLIST = [
 ];
 
 export const cpf = value => {
-  if (!value || BLACKLIST.indexOf(value) > 0) {
+  if (!value || BLACKLIST.indexOf(value) > -1) {
     return false;
   }
   value = value.replace(/[^\d]+/g, "");
