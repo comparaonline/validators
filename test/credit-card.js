@@ -19,20 +19,17 @@ describe('Credit Card validations', () => {
   describe('#creditCard', () => {
     context('Mastercard', () =>
       it('returns true', () =>
-        expect(creditCard(chance.cc({ type: 'Mastercard' }))).to.be.true
-      )
+        expect(creditCard(chance.cc({ type: 'Mastercard' }))).to.be.true)
     );
 
     context('Visa', () =>
       it('returns true', () =>
-        expect(creditCard(chance.cc({ type: 'Visa' }))).to.be.true
-      )
+        expect(creditCard(chance.cc({ type: 'Visa' }))).to.be.true)
     );
 
     context('American Express ', () =>
       it('returns true', () =>
-        expect(creditCard(chance.cc({ type: 'American Express' }))).to.be.true
-      )
+        expect(creditCard(chance.cc({ type: 'American Express' }))).to.be.true)
     );
 
     context('Mod10 with length equal to 12', () =>
@@ -48,62 +45,65 @@ describe('Credit Card validations', () => {
     );
 
     context('Mod10 with length equal to 20', () =>
-      it('returns false', () => expect(creditCard('11122233445566779018')).to.be.false)
+      it('returns false', () =>
+        expect(creditCard('11122233445566779018')).to.be.false)
     );
 
     context('with letters', () =>
-      it('returns false', () => expect(creditCard('creditcardnumber')).to.be.false)
+      it('returns false', () =>
+        expect(creditCard('creditcardnumber')).to.be.false)
     );
   });
 
   describe('#isAmericaExpress', () => {
     context('Mastercard', () =>
       it('returns false', () =>
-        expect(isAmericanExpress(chance.cc({ type: 'Mastercard' }))).to.be.false
-      )
+        expect(isAmericanExpress(chance.cc({ type: 'Mastercard' }))).to.be
+          .false)
     );
 
     context('American Express', () =>
       it('returns false', () =>
-        expect(isAmericanExpress(chance.cc({ type: 'American Express' }))).to.be.true
-      )
+        expect(isAmericanExpress(chance.cc({ type: 'American Express' }))).to.be
+          .true)
     );
   });
 
   describe('#isVisa', () => {
     context('Mastercard', () =>
-      it('returns false', () => expect(isVisa(chance.cc({ type: 'Mastercard' }))).to.be.false)
+      it('returns false', () =>
+        expect(isVisa(chance.cc({ type: 'Mastercard' }))).to.be.false)
     );
 
     context('Visa', () =>
-      it('returns true', () => expect(isVisa(chance.cc({ type: 'Visa' }))).to.be.true)
+      it('returns true', () =>
+        expect(isVisa(chance.cc({ type: 'Visa' }))).to.be.true)
     );
   });
 
   describe('#isDinersClub', () => {
     context('Mastercard', () =>
       it('returns false', () =>
-        expect(isDinersClub(chance.cc({ type: 'Mastercard' }))).to.be.false
-      )
+        expect(isDinersClub(chance.cc({ type: 'Mastercard' }))).to.be.false)
     );
 
     context('Diners Club International', () =>
       it('returns true', () =>
-        expect(isDinersClub(chance.cc({ type: 'Diners Club International' }))).to.be.true)
+        expect(isDinersClub(chance.cc({ type: 'Diners Club International' })))
+          .to.be.true)
     );
   });
 
   describe('#isMastercard', () => {
     context('Diners Club International', () =>
       it('returns false', () =>
-        expect(isMastercard(chance.cc({ type: 'Diners Club International' }))).to.be.false
-      )
+        expect(isMastercard(chance.cc({ type: 'Diners Club International' })))
+          .to.be.false)
     );
 
     context('Mastercard', () =>
       it('returns true', () =>
-        expect(isMastercard(chance.cc({ type: 'Mastercard' }))).to.be.true
-      )
+        expect(isMastercard(chance.cc({ type: 'Mastercard' }))).to.be.true)
     );
   });
 
@@ -122,15 +122,18 @@ describe('Credit Card validations', () => {
 
     context('Diners Club International', () => {
       it('returns false', () => {
-        expect(isHipercard(chance.cc({ type: 'Diners Club International' }))).to.be.false;
+        expect(isHipercard(chance.cc({ type: 'Diners Club International' }))).to
+          .be.false;
       });
     });
   });
 
   describe('#isElo', () => {
     context('Elo', () => {
-      it('returns true', () => {
-        expect(isElo(g.generateEloCard().vcc)).to.be.true;
+      g.eloCards.forEach(elo => {
+        it('returns true', () => {
+          expect(isElo(elo.vcc)).to.be.true;
+        });
       });
     });
 
@@ -142,7 +145,9 @@ describe('Credit Card validations', () => {
 
     context('Diners Club International', () => {
       it('returns false', () => {
-        expect(isElo(chance.cc(chance.cc({ type: 'Diners Club International' })))).to.be.false;
+        expect(
+          isElo(chance.cc(chance.cc({ type: 'Diners Club International' })))
+        ).to.be.false;
       });
     });
   });
